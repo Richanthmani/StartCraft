@@ -1,6 +1,6 @@
 import { Router } from "express";
 import nodemailer from "nodemailer";
-import rateLimit from "express-rate-limit";
+import { rateLimit } from "express-rate-limit";
 import { logger } from "../lib/logger";
 
 const router = Router();

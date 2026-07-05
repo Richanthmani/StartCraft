@@ -223,7 +223,12 @@ function Counter({ from = 0, to, duration = 2, suffix = "" }: { from?: number, t
 }
 
 export function Stats() {
-  const stats = [
+  const stats: Array<{
+    value: number;
+    suffix: string;
+    label: string;
+    isFloat?: boolean;
+  }> = [
     // { value: 10000, suffix: "+", label: "Meals Served Daily" },
     // { value: 50, suffix: "+", label: "Industrial Clients" },
     // { value: 99.8, suffix: "%", label: "On-Time Delivery", isFloat: true },
