@@ -1,36 +1,31 @@
-# [Project name]
+# StarCraft Foods & Services
 
-_Replace the heading above with the project's name, and this line with one sentence describing what this app does for users._
+Industrial catering company landing page with an enquiry form that emails submissions directly to the business owner.
 
 ## Run & Operate
 
-- `pnpm --filter @workspace/api-server run dev` — run the API server (port 5000)
+- `pnpm --filter @workspace/api-server run dev` — run the API server (port 8080)
 - `pnpm run typecheck` — full typecheck across all packages
 - `pnpm run build` — typecheck + build all packages
-- `pnpm --filter @workspace/api-spec run codegen` — regenerate API hooks and Zod schemas from the OpenAPI spec
-- `pnpm --filter @workspace/db run push` — push DB schema changes (dev only)
-- Required env: `DATABASE_URL` — Postgres connection string
 
 ## Stack
 
 - pnpm workspaces, Node.js 24, TypeScript 5.9
-- API: Express 5
-- DB: PostgreSQL + Drizzle ORM
-- Validation: Zod (`zod/v4`), `drizzle-zod`
-- API codegen: Orval (from OpenAPI spec)
-- Build: esbuild (CJS bundle)
+- Frontend: React + Vite + Tailwind CSS + Framer Motion (`artifacts/starcraft-foods`)
+- API: Express 5 + Nodemailer (`artifacts/api-server`)
+- No database — enquiries are emailed directly via Gmail SMTP
 
 ## Where things live
 
-_Populate as you build — short repo map plus pointers to the source-of-truth file for DB schema, API contracts, theme files, etc._
+- `artifacts/starcraft-foods/src/components/ui-sections/` — all page sections (Top, Middle, Bottom, End)
+- `artifacts/api-server/src/routes/enquiry.ts` — enquiry email endpoint (`POST /api/enquiry`)
+- `attached_assets/generated_images/` — AI-generated hero and section images
 
 ## Architecture decisions
 
-_Populate as you build — non-obvious choices a reader couldn't infer from the code (3-5 bullets)._
-
-## Product
-
-_Describe the high-level user-facing capabilities of this app once they exist._
+- No database: enquiry form submissions are delivered by email to the owner's Gmail inbox; no persistence layer needed.
+- Rate limiting on `/api/enquiry`: 5 requests per IP per hour to prevent spam-driven Gmail quota exhaustion.
+- Gmail SMTP credentials stored as Replit Secrets (`GMAIL_USER`, `GMAIL_APP_PASSWORD`); recipient address is hardcoded in `enquiry.ts`.
 
 ## User preferences
 
@@ -38,8 +33,8 @@ _Populate as you build — explicit user instructions worth remembering across s
 
 ## Gotchas
 
-_Populate as you build — sharp edges, "always run X before Y" rules._
+- Gmail App Password (not the account password) is required for SMTP auth. Generate at: Google Account → Security → 2-Step Verification → App passwords.
 
 ## Pointers
 
-- See the `pnpm-workspace` skill for workspace structure, TypeScript setup, and package details
+- See the `pnpm-workspace` skill for workspace structure, TypeScript setup, and package details.
