@@ -1,0 +1,27 @@
+kind = "web"
+previewPath = "/"
+title = "StarCraft Foods"
+version = "1.0.0"
+id = "artifacts/starcraft-foods"
+router = "path"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 24390
+
+[services.development]
+run = "pnpm --filter @workspace/starcraft-foods run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/starcraft-foods", "run", "build" ]
+serve = "static"
+publicDir = "artifacts/starcraft-foods/dist/public"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "24390"
+BASE_PATH = "/"

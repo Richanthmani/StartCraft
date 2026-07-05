@@ -1,0 +1,487 @@
+You are a world-class UI/UX designer, branding expert, and senior frontend engineer specializing in enterprise websites.
+
+Your task is to design a premium, modern, responsive website for an **Industrial Catering Company** that provides daily meal services to factories, manufacturing plants, warehouses, logistics parks, industrial estates, and large corporate campuses.
+
+## Objective
+
+The website should convince HR managers, Plant Heads, Administration teams, Procurement Managers, Facility Managers, and Business Owners that this company is a reliable long-term food service partner capable of serving hundreds or thousands of employees every day.
+
+The website should communicate:
+
+* Large-scale meal production
+* Hygiene and food safety
+* Operational reliability
+* Timely delivery
+* Nutritionally balanced meals
+* Workforce satisfaction
+* Long-term contract catering
+
+This is **NOT** a restaurant website and **NOT** a wedding/event catering website.
+
+---
+
+# DESIGN STYLE
+
+Create an enterprise-grade website similar to global industrial catering companies.
+
+The visual style should be:
+
+* Premium
+* Corporate
+* Clean
+* Professional
+* Modern
+* Minimal
+* Trustworthy
+
+Use plenty of white space, high-quality photography, subtle animations, elegant typography, and clean layouts.
+
+Avoid flashy restaurant-style graphics.
+
+---
+
+# BRAND COLORS
+
+Primary:
+Deep Green (#1E5631)
+
+Secondary:
+Orange (#F4A261)
+
+Background:
+White
+
+Section Background:
+Light Gray (#F8F9FA)
+
+Text:
+Dark Gray (#222222)
+
+Accent:
+Golden Yellow (#E9C46A)
+
+---
+
+# HOME PAGE
+
+## Hero Section
+
+Large full-screen hero featuring:
+
+* Industrial kitchen
+* Professional chefs
+* Food preparation
+* Workers enjoying meals
+* Delivery vehicles
+* Corporate cafeteria
+
+Headline:
+
+### Industrial Catering Solutions That Keep Your Workforce Productive
+
+Subheading:
+
+Fresh, hygienic, and nutritious meals delivered on time for factories, manufacturing units, warehouses, industrial parks, and corporate campuses.
+
+Primary CTA:
+Request a Proposal
+
+Secondary CTA:
+Schedule a Food Tasting
+
+---
+
+## Trusted By
+
+Display logos of industrial sectors:
+
+* Manufacturing
+* Automotive
+* Pharmaceutical
+* Textile
+* Warehousing
+* Logistics
+* Food Processing
+* Corporate Offices
+
+---
+
+## Company Highlights
+
+Animated statistics:
+
+10,000+
+Meals Served Daily
+
+50+
+Industrial Clients
+
+99.8%
+On-Time Delivery
+
+24×7
+Shift Catering Support
+
+15+
+Years Experience
+
+100%
+FSSAI Compliant
+
+---
+
+## Our Industrial Catering Services
+
+Cards for:
+
+Daily Employee Meals
+
+Factory Cafeteria Management
+
+Breakfast Services
+
+Lunch Services
+
+Dinner Services
+
+Night Shift Meals
+
+Packed Meals
+
+Executive Dining
+
+Tea & Snacks
+
+Special Dietary Meals
+
+Festival Menus
+
+Emergency Catering
+
+---
+
+## Industries We Serve
+
+Manufacturing Plants
+
+Factories
+
+Industrial Parks
+
+Warehouses
+
+Construction Sites
+
+Corporate Offices
+
+Hospitals
+
+Educational Institutions
+
+Government Facilities
+
+Logistics Hubs
+
+---
+
+## Why Companies Choose Us
+
+Feature cards:
+
+Dedicated Industrial Kitchen
+
+Strict Hygiene Protocols
+
+Fresh Ingredients Daily
+
+Customized Weekly Menus
+
+Nutrition-Focused Meal Planning
+
+Bulk Meal Capacity
+
+Experienced Culinary Team
+
+Temperature-Controlled Transport
+
+On-Time Delivery Guarantee
+
+Digital Quality Monitoring
+
+Food Safety Compliance
+
+Dedicated Account Manager
+
+---
+
+## Our Process
+
+Timeline:
+
+Requirement Discussion
+
+↓
+
+Site Assessment
+
+↓
+
+Customized Menu Planning
+
+↓
+
+Food Tasting Session
+
+↓
+
+Contract Finalization
+
+↓
+
+Daily Meal Operations
+
+↓
+
+Regular Quality Reviews
+
+---
+
+## Weekly Menu
+
+Professional rotating menu.
+
+Breakfast
+
+Lunch
+
+Dinner
+
+Special Meals
+
+Healthy Options
+
+Download Menu PDF button.
+
+---
+
+## Kitchen & Operations
+
+Large gallery featuring:
+
+Industrial cooking equipment
+
+Steam cooking
+
+Food preparation
+
+Packaging
+
+Cold storage
+
+Vegetable washing
+
+Quality inspection
+
+Delivery loading
+
+Dining areas
+
+Staff uniforms
+
+---
+
+## Hygiene & Safety
+
+Dedicated section covering:
+
+* FSSAI compliance
+* Daily sanitation
+* Hair nets & gloves
+* Quality inspections
+* Temperature-controlled storage
+* Safe transportation
+* Clean water systems
+* Pest control
+* Staff training
+
+---
+
+## Client Success Stories
+
+Highlight measurable results:
+
+### Manufacturing Plant
+
+800 employees
+
+Daily breakfast and lunch
+
+99.9% on-time delivery
+
+Reduced cafeteria complaints
+
+Improved employee satisfaction
+
+Repeat for multiple industries.
+
+---
+
+## Testimonials
+
+Corporate-style testimonials from HR Managers, Plant Heads, and Facility Managers.
+
+---
+
+## Frequently Asked Questions
+
+Can you serve more than 2,000 employees?
+
+Can menus be customized?
+
+Can you support multiple shifts?
+
+Do you provide emergency meal services?
+
+How do you ensure hygiene?
+
+Can we request a trial meal?
+
+---
+
+## Final CTA
+
+Headline:
+
+Looking for a Reliable Industrial Catering Partner?
+
+Subheading:
+
+Let's discuss how we can provide fresh, hygienic, and cost-effective meals for your workforce.
+
+Buttons:
+
+Request Proposal
+
+Book Food Tasting
+
+---
+
+## Contact
+
+Large inquiry form asking:
+
+Company Name
+
+Industry
+
+Location
+
+Number of Employees
+
+Meal Requirements
+
+Preferred Start Date
+
+Phone
+
+Email
+
+Special Requirements
+
+Display:
+
+Phone
+
+Email
+
+WhatsApp
+
+Office Address
+
+Google Maps
+
+---
+
+## Footer
+
+Quick Links
+
+Services
+
+Industries
+
+Resources
+
+Privacy Policy
+
+Social Media
+
+Copyright
+
+---
+
+# EXTRA SECTIONS
+
+Download Company Profile (PDF)
+
+Download Sample Weekly Menu
+
+Food Safety Certifications
+
+CSR Initiatives
+
+Our Team
+
+Infrastructure
+
+Fleet & Logistics
+
+Kitchen Capacity
+
+Quality Assurance
+
+Case Studies
+
+Blog
+
+Careers
+
+---
+
+# ANIMATIONS
+
+Use Framer Motion:
+
+* Fade-in sections
+* Smooth scrolling
+* Hover effects
+* Animated counters
+* Timeline animations
+* Image zoom on hover
+* Floating CTA button
+
+---
+
+# TECH STACK
+
+Next.js
+
+React
+
+Tailwind CSS
+
+Framer Motion
+
+TypeScript
+
+Responsive Design
+
+SEO Optimized
+
+Fast Loading
+
+Accessible (WCAG)
+
+---
+
+The final website should feel like the digital presence of a trusted industrial catering company that serves thousands of employees every day. The emphasis should be on operational excellence, food safety, scalability, and long-term corporate partnerships rather than restaurant dining or event catering.
