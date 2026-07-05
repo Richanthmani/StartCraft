@@ -1,11 +1,11 @@
-import { loadLocalEnv } from "./lib/load-local-env";
+import { loadLocalEnv } from "./lib/load-local-env.js";
 
 loadLocalEnv();
 
 async function main() {
   const [{ default: app }, { logger }] = await Promise.all([
-    import("./app"),
-    import("./lib/logger"),
+    import("./app.js"),
+    import("./lib/logger.js"),
   ]);
 
   const rawPort = process.env["PORT"];
