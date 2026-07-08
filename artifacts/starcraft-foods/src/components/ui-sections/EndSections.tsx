@@ -313,7 +313,7 @@ export function Contact() {
               </div>
               <div>
                 <p className="text-sm font-semibold text-muted-foreground mb-1">Email</p>
-                <p className="text-lg font-bold text-foreground">1985satishtalla@gmail.com</p>
+                <p className="text-lg font-bold text-foreground">sales@starcraftfoodservices.com</p>
               </div>
             </div>
 
