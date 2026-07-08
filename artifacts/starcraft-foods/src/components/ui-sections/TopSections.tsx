@@ -171,12 +171,12 @@ export function Hero() {
       {/*  </div>*/}
       {/*</motion.div>*/}
       
-      <div className="absolute top-24 right-6 md:top-32 md:right-12 z-20">
-        <div className="bg-white/10 backdrop-blur-md border border-white/20 text-white px-4 py-2 rounded text-xs font-semibold flex items-center gap-3">
-          <span className="opacity-70 text-[10px] tracking-widest">CERTIFICATIONS</span>
-          <span>FSSAI · HACCP · ISO 22000</span>
-        </div>
-      </div>
+      {/*<div className="absolute top-24 right-6 md:top-32 md:right-12 z-20">*/}
+      {/*  <div className="bg-white/10 backdrop-blur-md border border-white/20 text-white px-4 py-2 rounded text-xs font-semibold flex items-center gap-3">*/}
+      {/*    <span className="opacity-70 text-[10px] tracking-widest">CERTIFICATIONS</span>*/}
+      {/*    <span>FSSAI · HACCP · ISO 22000</span>*/}
+      {/*  </div>*/}
+      {/*</div>*/}
     </section>
   );
 }
