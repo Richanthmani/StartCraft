@@ -1,5 +1,9 @@
 import nodemailer from "nodemailer";
 
+// Force the Node.js runtime — nodemailer uses Node's net/tls modules and
+// cannot run on Vercel's Edge runtime.
+export const config = { runtime: "nodejs" };
+
 function esc(str) {
   return str
     .replace(/&/g, "&amp;")
