@@ -81,24 +81,45 @@ function buildHtml(body) {
     </div>`;
 }
 
-export default async function handler(request) {
-  // Wrap the entire handler so nothing can escape as an unhandled exception
-  // (which Vercel renders as an opaque, non-JSON 500 page).
+// Reads and JSON-parses the request body for classic Vercel Node.js
+// functions, where `req` is a Node http.IncomingMessage (no `.json()`
+// helper) and the body may or may not already be pre-parsed depending
+// on the `Content-Type` header handling.
+async function readJsonBody(req) {
+  if (req.body && typeof req.body === "object") {
+    return req.body;
+  }
+  if (typeof req.body === "string" && req.body.length > 0) {
+    return JSON.parse(req.body);
+  }
+
+  const chunks = [];
+  for await (const chunk of req) {
+    chunks.push(chunk);
+  }
+  const raw = Buffer.concat(chunks).toString("utf8");
+  return raw ? JSON.parse(raw) : {};
+}
+
+export default async function handler(req, res) {
   try {
-    if (request.method !== "POST") {
-      return Response.json({ error: "Method not allowed" }, { status: 405 });
+    if (req.method !== "POST") {
+      res.status(405).json({ error: "Method not allowed" });
+      return;
     }
 
     let body;
     try {
-      body = await request.json();
+      body = await readJsonBody(req);
     } catch {
-      return Response.json({ error: "Invalid JSON in request body." }, { status: 400 });
+      res.status(400).json({ error: "Invalid JSON in request body." });
+      return;
     }
 
     const validationError = validateFields(body);
     if (validationError) {
-      return Response.json({ error: validationError }, { status: 400 });
+      res.status(400).json({ error: validationError });
+      return;
     }
 
     const fields = {
@@ -128,10 +149,8 @@ export default async function handler(request) {
         !user && "SMTP_USER",
         !pass && "SMTP_PASSWORD",
       ].filter(Boolean);
-      return Response.json(
-        { error: `Email service is not configured. Missing: ${missing.join(", ")}.` },
-        { status: 503 },
-      );
+      res.status(503).json({ error: `Email service is not configured. Missing: ${missing.join(", ")}.` });
+      return;
     }
 
     try {
@@ -150,32 +169,26 @@ export default async function handler(request) {
         html: buildHtml(fields),
       });
 
-      return Response.json({ ok: true });
+      res.status(200).json({ ok: true });
     } catch (error) {
       console.error("Failed to send enquiry email:", error);
       const smtpError = error;
       if (smtpError && smtpError.code === "EAUTH") {
-        return Response.json(
-          {
-            error:
-              "SMTP authentication failed. Check SMTP_USER, SMTP_PASSWORD, and the hosting mail server settings.",
-          },
-          { status: 401 },
-        );
+        res.status(401).json({
+          error:
+            "SMTP authentication failed. Check SMTP_USER, SMTP_PASSWORD, and the hosting mail server settings.",
+        });
+        return;
       }
 
-      return Response.json(
-        {
-          error: `Failed to send email: ${smtpError && smtpError.message ? smtpError.message : "unknown error"}. Please try again later.`,
-        },
-        { status: 500 },
-      );
+      res.status(500).json({
+        error: `Failed to send email: ${smtpError && smtpError.message ? smtpError.message : "unknown error"}. Please try again later.`,
+      });
     }
   } catch (fatal) {
     console.error("Unhandled error in /api/enquiry:", fatal);
-    return Response.json(
-      { error: `Unexpected server error: ${fatal && fatal.message ? fatal.message : "unknown"}` },
-      { status: 500 },
-    );
+    res.status(500).json({
+      error: `Unexpected server error: ${fatal && fatal.message ? fatal.message : "unknown"}`,
+    });
   }
 }
