@@ -5,8 +5,6 @@ import { logger } from "../lib/logger.js";
 
 const router = Router();
 
-const TO_EMAIL = "thalluri.richanthmani1302@gmail.com";
-
 // 5 enquiries per IP per hour
 const enquiryLimiter = rateLimit({
   windowMs: 60 * 60 * 1000,
@@ -96,15 +94,20 @@ function buildHtml(body: Record<string, string>): string {
     </div>`;
 }
 
-function getSmtpCredentials() {
-  const gmailUser = process.env["GMAIL_USER"];
-  const gmailPass = process.env["GMAIL_APP_PASSWORD"];
+function getSmtpConfig() {
+  const host = process.env["SMTP_HOST"];
+  const port = Number(process.env["SMTP_PORT"] ?? "");
+  const secure = process.env["SMTP_SECURE"] === "true";
+  const user = process.env["SMTP_USER"];
+  const pass = process.env["SMTP_PASSWORD"];
+  const from = process.env["MAIL_FROM"] || user;
+  const to = process.env["ENQUIRY_TO_EMAIL"] || user;
 
-  if (!gmailUser || !gmailPass) {
+  if (!host || !port || Number.isNaN(port) || !user || !pass || !from) {
     return null;
   }
 
-  return { gmailUser, gmailPass };
+  return { host, port, secure, user, pass, from, to };
 }
 
 router.post("/enquiry", enquiryLimiter, async (req, res) => {
@@ -128,28 +131,39 @@ router.post("/enquiry", enquiryLimiter, async (req, res) => {
     specialReq: typeof body.specialReq === "string" ? body.specialReq.trim() : "",
   };
 
-  const smtpCredentials = getSmtpCredentials();
-  if (!smtpCredentials) {
+  const smtpConfig = getSmtpConfig();
+  if (!smtpConfig) {
     res.status(503).json({ error: "Email service is not configured." });
     return;
   }
 
   try {
     const transporter = nodemailer.createTransport({
-      service: "gmail",
-      auth: { user: smtpCredentials.gmailUser, pass: smtpCredentials.gmailPass },
+      host: smtpConfig.host,
+      port: smtpConfig.port,
+      secure: smtpConfig.secure,
+      auth: { user: smtpConfig.user, pass: smtpConfig.pass },
     });
 
     await transporter.sendMail({
-      from: `"StarCraft Foods Website" <${smtpCredentials.gmailUser}>`,
-      to: TO_EMAIL,
+      from: smtpConfig.from,
+      to: smtpConfig.to,
       replyTo: fields.email,
       subject: `New Enquiry from ${fields.companyName} (${fields.industry})`,
       html: buildHtml(fields),
     });
 
     res.json({ ok: true });
-  } catch {
+  } catch (error) {
+    logger.error({ err: error }, "Failed to send enquiry email");
+    const smtpError = error as { code?: string; response?: string };
+    if (smtpError.code === "EAUTH") {
+      res.status(401).json({
+        error:
+          "SMTP authentication failed. Check SMTP_USER, SMTP_PASSWORD, and the hosting mail server settings.",
+      });
+      return;
+    }
     res.status(500).json({ error: "Failed to send email. Please try again later." });
   }
 });
